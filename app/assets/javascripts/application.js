@@ -16,3 +16,4 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require toastr
+//= require dropzone
