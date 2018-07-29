@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180728073306) do
+ActiveRecord::Schema.define(version: 20180728134552) do
 
   create_table "listings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "home_type"
     t.string "pet_type"
     t.string "pet_size"
     t.integer "breeding_years"
-    t.string "adress"
+    t.string "address"
     t.string "listing_title"
     t.string "listing_content"
     t.integer "price_pernight"
@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(version: 20180728073306) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "latitude", limit: 24
+    t.float "longitude", limit: 24
     t.index ["user_id"], name: "index_listings_on_user_id"
   end
 
