@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180728134552) do
+ActiveRecord::Schema.define(version: 20180730124742) do
 
   create_table "listings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "home_type"
@@ -41,6 +41,19 @@ ActiveRecord::Schema.define(version: 20180728134552) do
     t.index ["listing_id"], name: "index_photos_on_listing_id"
   end
 
+  create_table "reservations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "user_id"
+    t.bigint "listing_id"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.integer "price_pernight"
+    t.integer "total_price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["listing_id"], name: "index_reservations_on_listing_id"
+    t.index ["user_id"], name: "index_reservations_on_user_id"
+  end
+
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -66,4 +79,6 @@ ActiveRecord::Schema.define(version: 20180728134552) do
 
   add_foreign_key "listings", "users"
   add_foreign_key "photos", "listings"
+  add_foreign_key "reservations", "listings"
+  add_foreign_key "reservations", "users"
 end

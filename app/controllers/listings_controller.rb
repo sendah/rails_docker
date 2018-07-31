@@ -32,7 +32,6 @@ class ListingsController < ApplicationController
 
   def update
     if @listing.update(listing_params)
-      redirect_to root_path, notice: "更新できました"
     end
   end
 
@@ -67,7 +66,7 @@ class ListingsController < ApplicationController
   end
 
   def set_listing
-    @listing = Listing.find(params[:id])
+    @listing = Listing.find(params[:id]) 
   end
 
 
