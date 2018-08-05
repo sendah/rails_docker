@@ -1,6 +1,9 @@
 class ReservationsController < ApplicationController
   
-    ddef create
+    def index
+        @reservations = current_user.reservations.where(self_bookking: nil)
+    end
+    def create
     @listing = Listing.find(params[:listing_id])
 
     # 自分で自分の部屋を予約する場合(カレンダーでの予約作成)
@@ -31,7 +34,7 @@ class ReservationsController < ApplicationController
       selectedDates
       if selectedDates
         selectedDates.each do |date|
-          current_user.reservations.create(:listing_id => @listing.id,:start_date => date,:end_date => date)
+          current_user.reservations.create(:listing_id => @listing.id,:start_date => date,:end_date => date, self_bookking => true)
         end
       end
       
