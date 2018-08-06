@@ -1,7 +1,10 @@
 class ReservationsController < ApplicationController
   
     def index
-        @reservations = current_user.reservations.where(self_bookking: nil)
+        @reservations = current_user.reservations.where(self_booking: nil)
+    end
+    def reserved
+        @listings = current_user.listings
     end
     def create
     @listing = Listing.find(params[:listing_id])

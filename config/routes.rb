@@ -19,7 +19,8 @@ Rails.application.routes.draw do
 
   get '/setdate'=> 'reservations#setdate'
   get '/duplicate'=> 'reservations#duplicate'
-  get '/reservations'=> 'reservations#index'
+  get '/reserved'=> 'reservations#index'
+  get '/reservations'=> 'reservations#reserved'
 
   get 'manage-listing/:id/basics' => 'listings#basics', as: 'manage_listing_basics'
   get 'manage-listing/:id/description' => 'listings#description', as: 'manage_listing_description'
